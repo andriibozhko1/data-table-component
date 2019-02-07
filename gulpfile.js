@@ -13,6 +13,7 @@ const stylesBlob = 'src/scss/**';
 const sassBlob = 'src/scss/**';
 const jsBlob = 'src/js/**';
 const normalizeBlob = 'src/normalize/**';
+const apiBlob = 'src/api/**';
 
 gulp.task('default', function () {
   return runSequence('build', 'serve');
@@ -21,7 +22,7 @@ gulp.task('default', function () {
 gulp.task('build', function () {
   return runSequence(
     'cleanDist',
-    ['processStyles', 'processHtml', 'processImages','sass','js','normalize']
+    ['processStyles', 'processHtml', 'processImages','sass','js','normalize','api']
   );
 });
 
@@ -48,6 +49,9 @@ gulp.task('serve', function () {
     return runSequence('js', 'reloadBrowser');
   });
   gulp.watch(normalizeBlob, function () {
+    return runSequence('js', 'reloadBrowser');
+  });
+    gulp.watch(apiBlob, function () {
     return runSequence('js', 'reloadBrowser');
   });
 });
@@ -96,4 +100,8 @@ gulp.task('js', function() {
 gulp.task('normalize', function() {
   return gulp.src(normalizeBlob)
   .pipe(gulp.dest(`${distDirectory}/normalize/`));
+});
+gulp.task('api', function() {
+  return gulp.src(apiBlob)
+  .pipe(gulp.dest(`${distDirectory}/api/`));
 });
