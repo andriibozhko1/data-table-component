@@ -19,7 +19,6 @@ export default class TableList {
     this.paginationLength = pagination.length - 1;
     this.quantityPhones = quantityPhones;
 
-    console.log(pagination[id])
     this.element.innerHTML = `
     <table class="table__table">
         <tr class="table__table-header">
