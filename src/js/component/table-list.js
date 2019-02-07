@@ -13,6 +13,7 @@ export default class TableList {
     phones.forEach(() => {
       pagination.push(phones.splice(0, quantityPhones));
     });
+    
     pagination.push(phones);
     pagination = pagination.filter(arr => arr.length !== 0);
 
@@ -44,9 +45,9 @@ export default class TableList {
         <div class="table__pagination-navigation">
           <span class="table__pagination-item" data-pagination-btns="-1">Prev</span>
             ${pagination
-              .map((phones, id) => {
+              .map((phones, index) => {
                 return `
-                  <div class="table__pagination-item" data-pagination-id="${id}">${id +
+                  <div class="table__pagination-item ${index === id ? 'table__pagination-item--active' : ''}" data-pagination-id="${index}">${index +
                   1}</div>
                 `;
               })

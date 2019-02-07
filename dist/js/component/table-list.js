@@ -13,11 +13,12 @@ export default class TableList {
     phones.forEach(() => {
       pagination.push(phones.splice(0, quantityPhones));
     });
+    
     pagination.push(phones);
     pagination = pagination.filter(arr => arr.length !== 0);
 
     this.pagination = pagination;
-    this.newPhoneList = phonesList;
+    this.editedPhoneList = phonesList;
     this.quantityPhones = quantityPhones;
     
     this.element.innerHTML = `
@@ -44,9 +45,9 @@ export default class TableList {
         <div class="table__pagination-navigation">
           <span class="table__pagination-item" data-pagination-btns="-1">Prev</span>
             ${pagination
-              .map((phones, id) => {
+              .map((phones, index) => {
                 return `
-                  <div class="table__pagination-item" data-pagination-id="${id}">${id +
+                  <div class="table__pagination-item ${index === id ? 'table__pagination-item--active' : ''}" data-pagination-id="${index}">${index +
                   1}</div>
                 `;
               })
@@ -78,6 +79,7 @@ export default class TableList {
   addEvents() {
     let dropDown = document.querySelector('[data-element="drop-down"]');
     let id = 0;
+
     this.element.addEventListener("filter", data => {
       this.filter(data.detail);
     });
@@ -87,20 +89,21 @@ export default class TableList {
         let typeOfSort = event.target.dataset.sortBy;
         this.sorting(typeOfSort);
       }
+
       if (event.target.dataset.paginationId) {
         id = +event.target.dataset.paginationId;
-        this._render(id,this.quantityPhones, this.newPhoneList);
+        this._render(id,this.quantityPhones, this.editedPhoneList);
       }
+
       if (event.target.dataset.paginationBtns) {
         switch (+event.target.dataset.paginationBtns) {
-
           case 1:
             if (id >= this.pagination.length - 1) {
               id = this.pagination.length;
               return;
             }
             id += +event.target.dataset.paginationBtns;
-            this._render(id,this.quantityPhones, this.newPhoneList);
+            this._render(id,this.quantityPhones, this.editedPhoneList);
             break;
 
           case -1:
@@ -109,7 +112,7 @@ export default class TableList {
               return;
             }
             id += +event.target.dataset.paginationBtns;
-            this._render(id,this.quantityPhones, this.newPhoneList);
+            this._render(id,this.quantityPhones, this.editedPhoneList);
             break;
         }
       }
