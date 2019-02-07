@@ -17,7 +17,7 @@ export default class TableList {
     pagination = pagination.filter(arr => arr.length !== 0);
 
     this.pagination = pagination;
-    this.newPhoneList = phonesList;
+    this.editedPhoneList = phonesList;
     this.quantityPhones = quantityPhones;
     
     this.element.innerHTML = `
@@ -78,6 +78,7 @@ export default class TableList {
   addEvents() {
     let dropDown = document.querySelector('[data-element="drop-down"]');
     let id = 0;
+
     this.element.addEventListener("filter", data => {
       this.filter(data.detail);
     });
@@ -87,20 +88,21 @@ export default class TableList {
         let typeOfSort = event.target.dataset.sortBy;
         this.sorting(typeOfSort);
       }
+
       if (event.target.dataset.paginationId) {
         id = +event.target.dataset.paginationId;
-        this._render(id,this.quantityPhones, this.newPhoneList);
+        this._render(id,this.quantityPhones, this.editedPhoneList);
       }
+
       if (event.target.dataset.paginationBtns) {
         switch (+event.target.dataset.paginationBtns) {
-
           case 1:
             if (id >= this.pagination.length - 1) {
               id = this.pagination.length;
               return;
             }
             id += +event.target.dataset.paginationBtns;
-            this._render(id,this.quantityPhones, this.newPhoneList);
+            this._render(id,this.quantityPhones, this.editedPhoneList);
             break;
 
           case -1:
@@ -109,7 +111,7 @@ export default class TableList {
               return;
             }
             id += +event.target.dataset.paginationBtns;
-            this._render(id,this.quantityPhones, this.newPhoneList);
+            this._render(id,this.quantityPhones, this.editedPhoneList);
             break;
         }
       }
