@@ -1,5 +1,3 @@
-const URL = "../api/phones.json";
-
 export default class ServerRequest {
   constructor() {
     this.getAllPhones();
@@ -7,7 +5,7 @@ export default class ServerRequest {
 
   getAllPhones() {
     return new Promise((resolve, reject) => {
-      fetch(URL).then(response => {
+      fetch('api/phones.json').then(response => {
         if (response.status !== 200) {
           reject(`${response.status} ${response.statusText}`);
         }
