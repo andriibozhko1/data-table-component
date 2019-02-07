@@ -9,11 +9,11 @@ export default class Header {
   }
   _render() {
     this.element.innerHTML = `
-    <select class="table__dropDown" data-element="drop-down">
+    <span>Show <select class="table__dropDown" data-element="drop-down">
       <option class="table__dropDown-items" value="5">5</option>
       <option class="table__dropDown-items" value="10">10</option>
       <option class="table__dropDown-items" value="20">20</option>
-    </select>
+    </select> phones</span>
     <label>Search: <input type="text" class="table__filter" data-element="table-filter" placeholder="Motorola"></input></label>
     `
   }
