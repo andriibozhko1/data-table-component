@@ -43,7 +43,7 @@ export default class TableList {
     </div>
     <div class="table__footer">
         <div class="table__pagination-navigation">
-          <span class="table__pagination-item" data-pagination-btns="-1">Prev</span>
+          <span class="table__pagination-item ${id === 0 ? 'table__pagination-item--hide' : ''}" data-pagination-btns="-1">Prev</span>
             ${pagination
               .map((phones, index) => {
                 return `
@@ -52,7 +52,7 @@ export default class TableList {
                 `;
               })
               .join("")}
-            <span class="table__pagination-item" data-pagination-btns="1">Next</span>
+            <span class="table__pagination-item ${id === this.pagination.length - 1 ? 'table__pagination-item--hide' : ''}" data-pagination-btns="1">Next</span>
           </div>
     </div>
     `;
@@ -66,7 +66,7 @@ export default class TableList {
         filteredArr.push(phone);
       }
     });
-    this._render(0, this.quantityPhones, filteredArr);
+    this._render(0, this.quantityPhones, filteredArr)
   }
 
   sorting(fieldName) {
@@ -99,7 +99,6 @@ export default class TableList {
         switch (+event.target.dataset.paginationBtns) {
           case 1:
             if (id >= this.pagination.length - 1) {
-              id = this.pagination.length;
               return;
             }
             id += +event.target.dataset.paginationBtns;
@@ -119,7 +118,7 @@ export default class TableList {
     });
 
     dropDown.addEventListener("change", () => {
-      this._render(0, dropDown.value);
+      this._render(0, dropDown.value,this.editedPhoneList);
     });
   }
 }

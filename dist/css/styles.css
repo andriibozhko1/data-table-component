@@ -100,4 +100,7 @@
         background: -webkit-gradient(linear, left bottom, left top, from(gray),color-stop(gray), to(#fff));
         background: linear-gradient(to top, gray,gray, #fff);
     }
+    &__pagination-item--hide {
+        visibility: hidden;
+    }
 }

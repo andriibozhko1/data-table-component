@@ -63,3 +63,5 @@
   .table__pagination-item--active {
     border: 1px solid gray;
     background: linear-gradient(to top, gray, gray, #fff); }
+  .table__pagination-item--hide {
+    visibility: hidden; }

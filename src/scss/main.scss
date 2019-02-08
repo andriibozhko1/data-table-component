@@ -86,4 +86,7 @@
         border: 1px solid gray;
         background: linear-gradient(to top, gray,gray, #fff);
     }
+    &__pagination-item--hide {
+        visibility: hidden;
+    }
 }
