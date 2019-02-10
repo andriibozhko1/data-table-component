@@ -33,12 +33,21 @@
 
     &__table-header {
         border-bottom: 1px solid black;
-        text-align: left;
     }
     &__type-of-sort {
+        border-right: 1px solid silver;
         padding: 10px;
         cursor: pointer;
     }
+    &__data-field {
+        border: 0;
+        border-bottom: 1px solid gray;;
+        font-weight: 100;
+        font-size: 20px;
+        outline: none;
+        padding: 5px;
+    }
+
     &__items-field {
         border: 0;
         border-bottom: 1px solid gray;;
@@ -46,7 +55,6 @@
         font-size: 20px;
         outline: none;
         padding: 5px;
-        width: 100%;
 
         &:focus {
             border-bottom: 2px solid rgb(65,150,200);
