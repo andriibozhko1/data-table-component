@@ -9,7 +9,7 @@
     min-height: 350px;
     width: 700px;
     padding: 25px;
-    margin: 2% auto;
+    margin: 1% auto;
     font-family: sans-serif;
 
     &__header {
@@ -28,6 +28,7 @@
     &__table {
         width: 100%;
         margin-top: 20px;
+        height: 550px;
         border-collapse: collapse;
     }
 
@@ -42,29 +43,15 @@
     &__data-field {
         border: 0;
         border-bottom: 1px solid gray;;
+        text-align: center;
         font-weight: 100;
         font-size: 20px;
         outline: none;
         padding: 5px;
     }
-
-    &__items-field {
-        border: 0;
-        border-bottom: 1px solid gray;;
-        font-weight: 100;
-        font-size: 20px;
-        outline: none;
-        padding: 5px;
-
-        &:focus {
-            border-bottom: 2px solid rgb(65,150,200);
-        }
+    &__data-field--active {
+        color: rgb(65,150,200);
     }
-
-    &__list {
-        padding: 10px;
-    }
-
     &__footer {
         margin-top: 30px;
         display: flex;

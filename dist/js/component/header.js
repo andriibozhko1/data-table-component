@@ -19,14 +19,14 @@ export default class Header {
   }
   _addEvents() {
     let filterField = this.element.querySelector('[data-element="table-filter"]');
-    let mainPage = document.querySelector('[data-component="table-list"]')
+    let table = document.querySelector('[data-component="table-list"]')
 
     let getValueToTableList = (value) => {
       let filterEvent = new CustomEvent('filter', {
         detail: value,
       })
 
-      mainPage.dispatchEvent(filterEvent);
+      table.dispatchEvent(filterEvent);
     }
     
     getValueToTableList = Debounce(getValueToTableList, 500);
