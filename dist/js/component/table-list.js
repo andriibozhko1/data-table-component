@@ -30,7 +30,7 @@ export default class TableList {
     this.pagination = pagination;
     this.editedPhoneList = itemsList;
     this.quantityPhones = quantityPhones;
-
+    this.paginationId = id;
     this.element.innerHTML = `
       <table class="table__table">
         <thead>
