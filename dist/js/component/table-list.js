@@ -120,7 +120,7 @@ export default class TableList {
           return a[typeOfSort] < b[typeOfSort] ? 1 : -1;
         }
       })
-    this._render(this.paginationId, this.quantityPhones, this.editedPhoneList);
+    this._render(0, this.quantityPhones, this.editedPhoneList);
   }
 
   addEvents() {
