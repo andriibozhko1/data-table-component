@@ -1,4 +1,4 @@
-import Debounce from '../utils/debounce.js';
+import debounce from '../utils/debounce.js';
 
 export default class Header {
   constructor({ element }) {
@@ -29,7 +29,7 @@ export default class Header {
       table.dispatchEvent(filterEvent);
     }
     
-    getValueToTableList = Debounce(getValueToTableList, 500);
+    getValueToTableList = debounce(getValueToTableList, 500);
 
     filterField.addEventListener('keyup', () => {
       getValueToTableList(filterField.value);
