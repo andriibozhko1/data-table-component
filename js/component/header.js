@@ -1,4 +1,4 @@
-import Debounce from '../utils/debounce.js';
+import debounce from '../utils/debounce.js';
 
 export default class Header {
   constructor({ element }) {
@@ -19,17 +19,17 @@ export default class Header {
   }
   _addEvents() {
     let filterField = this.element.querySelector('[data-element="table-filter"]');
-    let mainPage = document.querySelector('[data-component="table-list"]')
+    let table = document.querySelector('[data-component="table-list"]')
 
     let getValueToTableList = (value) => {
       let filterEvent = new CustomEvent('filter', {
         detail: value,
       })
 
-      mainPage.dispatchEvent(filterEvent);
+      table.dispatchEvent(filterEvent);
     }
     
-    getValueToTableList = Debounce(getValueToTableList, 500);
+    getValueToTableList = debounce(getValueToTableList, 500);
 
     filterField.addEventListener('keyup', () => {
       getValueToTableList(filterField.value);
